@@ -1,0 +1,8 @@
+Realizza un programma in grado di fare le seguenti cose:
+- Importare in una lista il contenuto del file in allegato
+- Cercare se a "Barcelona" si sono svolte le olimpiadi invernali
+- Contare attraverso un dictionary il numero di edizioni per ogni città
+- Mostrare gli anni in cui si sono svolte le olimpiadi della città con più edizioni
+- Verificare se si sono svolte più edizioni invernali che estive
+- Inserire in una lista le nazioni in cui si sono svolte le olimpiadi (no duplicati)
+- Verificare se esiste un gap maggiore di 4 anni tra un'edizione e l'altra e in caso dire in quale anno si sarebbero dovute svolgere

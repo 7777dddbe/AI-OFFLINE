@@ -1,0 +1,22 @@
+#Apro il file in sola lettura
+f = open("C:\\Users\\pcins.AGARDASC0\\Documents\\dati.csv", "r") #uso doppia slash!!!
+ContenutoFile = [] #creo la lista per contenere le righe del file
+for line in f:#scorro il file riga per riga
+    if not line.startswith("City"): #escludo la prima riga
+        ContenutoFile.append(line) #aggiungo ogni riga alla lista
+
+ConteggioXCittà = {} #creo il dictionary per il conteggio delle edizioni per città
+for e in ContenutoFile: #scorro ogni elemento dellla lista
+    riga = e.split(";")  #suddivido la riga in base al ;      
+    città = riga[0] #estrapolo dalla posizione 0 la città (perchè era nella prima colonna del file)
+    if città not in ConteggioXCittà:
+        #se la città non esiste nel dictionary del conteggio, la inserisco con valore 1
+        ConteggioXCittà.update({città, 1})
+    else:
+        #ConteggioXCittà[città] = ConteggioXCittà[città] + 1   lo sostituisco con la riga sotto che è più sintetica
+        ConteggioXCittà[città] += 1 #incremento il conteggio per la città
+    
+for città, valore in ConteggioXCittà.items:
+    if valore > max:
+        max = valore
+        cittàmax = città

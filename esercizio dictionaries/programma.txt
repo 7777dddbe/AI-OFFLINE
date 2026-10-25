@@ -1,0 +1,36 @@
+lista = []
+continua = True
+
+while continua:
+    frase = input("inserisci una frase o una parola")
+    if frase.upper() != "STOP":
+        lista.append(frase.strip())
+    else:
+        continua = False
+
+conteggio = {}
+for f in lista:
+    iniziale = f[0]
+    if iniziale in conteggio:
+        conteggio[iniziale] += 1 #incrementa di uno il conteggio per le frasi con quella lettera iniziale
+    else:
+        conteggio[iniziale] = 1 #crea un nuovo elemento nel dictionary con valore = 1 e chiave la lettera iniziale
+
+frasi_dette = [] #serve a salvare le frasi già dette per evitare di dirle nuovamente
+iniziale = input("quale lettera vuoi cercare?")
+if iniziale in conteggio:
+    for f in lista:
+        if f[0] == iniziale:  #controlla se inizia con la lettera richiesta   
+            if f not in frasi_dette:  #controlla se la frase è già stata detta
+                print(f) #dice la frase
+                frasi_dette.append(f) #aggiunge alle frasi dette per evitare di replicarla
+        else:
+            print("non ci sono frasi che iniziano con: " + iniziale)
+
+stringa = ""
+for i in range(len(lista)):
+    if i % 2 == 0:
+        f = lista[i].upper()
+    else:
+        f = lista[i].lower()
+    stringa += f[0] + f[-1]

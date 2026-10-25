@@ -1,0 +1,31 @@
+from random import randint
+numeri = []
+for i in range(80):
+    numeri.append(randint(0,24)*2+1)
+
+Indici = {} #dictionary con le posizioni dei numeri nella lista
+for i in range(len(numeri)):
+    n = numeri[i]
+    if n in Indici:
+        Indici[n].append(i)
+    else:
+        Indici[n] = [i]
+
+max = 0
+valmax = 0
+for n, posizioni in Indici.items():
+    print(n, ": " , posizioni)
+    if len(posizioni) > max:
+        max = len(posizioni)
+        valmax = n
+
+print (valmax, " è il valore più frequente")
+
+dmax = 0
+for n, posizioni in Indici.items():
+    d = posizioni[-1] - posizioni[0]
+    if d > dmax:
+        dmax = d
+        valmax = n
+
+print(dmax, " ", valmax)
