@@ -13,6 +13,7 @@ import sys
 import tarfile
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
 
@@ -127,29 +128,63 @@ def _scarica_una_volta(url, parziale, grandezza, sha256, etichetta):
 # ================================================================ motore AI (llama.cpp)
 
 def trova_motore(sistema):
-    """Cerca l'ultima versione di llama.cpp per Windows o Linux."""
+    """Cerca l'ultima versione di llama.cpp per Windows o Linux.
+
+    Attenzione: llama.cpp pubblica TUTTE le versioni come "pre-release", quindi non vanno scartate.
+    """
     schema = MOTORI[sistema]["schema"]
     try:
         for versione in scarica_json(GITHUB_RELEASE_API):
-            if versione.get("draft") or versione.get("prerelease"):
+            if versione.get("draft"):
                 continue
             for a in versione.get("assets", []):
-                if re.search(schema, a["name"]) and not a["name"].startswith("cudart"):
+                if re.search(schema, a["name"]) and not a["name"].startswith("cudart") \
+                        and a.get("state", "uploaded") == "uploaded":
                     digest = a.get("digest") or ""
                     return {"tag": versione["tag_name"], "nome": a["name"], "url": a["browser_download_url"],
                             "dimensione": a.get("size"),
                             "sha256": digest[7:] if digest.startswith("sha256:") else None}
+        avviso("Nell'elenco di GitHub non c'è il file giusto, provo dalla pagina web...")
     except Exception as e:  # noqa: BLE001
         avviso("API di GitHub non disponibile (" + str(e) + "), provo dalla pagina web...")
-    _, url_finale = scarica_testo(GITHUB_RELEASE_WEB + "/latest")
-    tag = url_finale.rstrip("/").split("/")[-1]
-    pagina, _ = scarica_testo(GITHUB_RELEASE_WEB + "/expanded_assets/" + tag)
-    for link in re.findall(r'href="([^"]+/releases/download/[^"]+)"', pagina):
-        nome = link.split("/")[-1]
-        if re.search(schema, nome) and not nome.startswith("cudart"):
-            return {"tag": tag, "nome": nome, "url": "https://github.com" + link if link.startswith("/") else link,
-                    "dimensione": None, "sha256": None}
-    raise RuntimeError("non trovo il file di llama.cpp per " + sistema)
+    return trova_motore_dal_sito(sistema, schema)
+
+
+def trova_motore_dal_sito(sistema, schema):
+    """Piano B: legge le versioni dalle pagine web di GitHub (senza API)."""
+    tag_trovati = []
+    for pagina_web in (GITHUB_RELEASE_WEB, GITHUB_RELEASE_WEB.replace("/releases", "/tags")):
+        try:
+            pagina, _ = scarica_testo(pagina_web)
+        except Exception:  # noqa: BLE001
+            continue
+        for tag in re.findall(r"/releases/tag/(b\d+)", pagina) + re.findall(r"/tree/(b\d+)", pagina):
+            if tag not in tag_trovati:
+                tag_trovati.append(tag)
+        if tag_trovati:
+            break
+    tag_trovati.sort(key=lambda t: int(t[1:]), reverse=True)
+    for tag in tag_trovati[:5]:
+        try:
+            pagina, _ = scarica_testo(GITHUB_RELEASE_WEB + "/expanded_assets/" + tag)
+            for link in re.findall(r'href="([^"]+/releases/download/[^"]+)"', pagina):
+                nome = link.split("/")[-1]
+                if re.search(schema, nome) and not nome.startswith("cudart"):
+                    return {"tag": tag, "nome": nome, "url": urllib.parse.urljoin(GITHUB_RELEASE_WEB, link),
+                            "dimensione": None, "sha256": None}
+        except Exception:  # noqa: BLE001
+            pass
+        # nome del file come lo crea llama.cpp: llama-<versione>-bin-win-cpu-x64.zip
+        nome = "llama-" + tag + ("-bin-win-cpu-x64.zip" if sistema == "win" else "-bin-ubuntu-x64.tar.gz")
+        url = GITHUB_RELEASE_WEB + "/download/" + tag + "/" + nome
+        try:
+            req = urllib.request.Request(url, headers=dict(INTESTAZIONI, Range="bytes=0-0"))
+            with urllib.request.urlopen(req, timeout=60):
+                return {"tag": tag, "nome": nome, "url": url, "dimensione": None, "sha256": None}
+        except Exception:  # noqa: BLE001
+            continue
+    raise RuntimeError("non trovo il file di llama.cpp per " + sistema
+                       + " (controlla che il PC riesca ad aprire github.com)")
 
 
 def estrai_archivio(archivio, destinazione, eseguibile):
