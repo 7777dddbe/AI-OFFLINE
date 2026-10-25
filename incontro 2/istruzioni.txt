@@ -1,0 +1,11 @@
+Trovare e contare le varianti utilizzando i file contenenti i cromosomi 19 e 20 nelle due versioni (allele A e allele B).
+Nel file Variants.vcf si trovano varie colonne. Nella prima è riportata la posizione della base da verificare.
+Per estrarre il valore del primo termine all'interno di una riga usare la funzione split() che restituisce un array con i singoli elementi separati dal carattere speciale "\t".
+
+Salvare in una lista il valore del controllo secondo il seguente criterio:
+Se in entrambi gli alleli si trova il valore presente nella colonna "ref" va riportato "0/0", se c'è una variazione solo nell'allele A, riportare "1/0",  se c'è una variazione solo nell'allele B, riportare "0/1", se c'è una variazione in entrambi, riportare ""1/1".
+
+Al termine, contare il numero di variazioni 
+
+Opzionale: modificare il file Variants.vcf aggiungendo la colonna del controllo che conterrà i valori della lista. Per farlo, utilizzare la funzione writelines() che consente di scrivere gli elementi di una lista in un file, oppure write() per scrivere riga per riga.
+Hint: utilizzare una lista in cui inserire le righe lette dal file, aggiungendo in fondo ad ogni elemento della lista il valore del controllo. Per fare in modo che anche quest'ultimo valore venga incolonnato, utilizzare il carattere speciale \t (tabulazione).
