@@ -1,0 +1,48 @@
+City;NOC_CountryRegion;Alpha-2 Code;Edition;Season
+Melbourne / Stockholm;AUS;AS;1956;Summer
+Sydney;AUS;AS;2000;Summer
+Innsbruck;AUT;AT;1964;Winter
+Innsbruck;AUT;AT;1976;Winter
+Antwerp;BEL;BE;1920;Summer
+Antwerp;BEL;BE;1920;Winter
+Montreal;CAN;CA;1976;Summer
+Lake Placid;CAN;CA;1980;Winter
+Calgary;CAN;CA;1988;Winter
+St. Moritz;SUI;SZ;1928;Winter
+St. Moritz;SUI;SZ;1948;Winter
+Beijing;CHN;CH;2008;Summer
+Berlin;GER;GM;1936;Summer
+Garmisch-Partenkirchen;GER;GM;1936;Winter
+Barcelona;ESP;SP;1992;Summer
+Helsinki;FIN;FI;1952;Summer
+Paris;FRA;FR;1900;Summer
+Paris;FRA;FR;1924;Summer
+Chamonix;FRA;FR;1924;Winter
+Grenoble;FRA;FR;1968;Winter
+Albertville;FRA;FR;1992;Winter
+London;GBR;UK;1908;Summer
+London;GBR;UK;1908;Winter
+London;GBR;UK;1948;Summer
+Munich;GER;DE;1972;Summer
+Athens;GRC;GR;2004;Summer
+Cortina d'Ampezzo;ITA;IT;1956;Winter
+Rome;ITA;IT;1960;Summer
+Turin;ITA;IT;2006;Winter
+Tokyo;JPN;JA;1964;Summer
+Sapporo;JPN;JA;1972;Winter
+Nagano;JPN;JA;1998;Winter
+Seoul;KOR;KS;1988;Summer
+Mexico;MEX;MX;1968;Summer
+Amsterdam;NED;NL;1928;Summer
+Oslo;NOR;NO;1952;Winter
+Lillehammer;NOR;NO;1994;Winter
+Stockholm;SWE;SW;1912;Summer
+St Louis;USA;US;1904;Summer
+Los Angeles;USA;US;1932;Summer
+Lake Placid;USA;US;1932;Winter
+Squaw Valley;USA;US;1960;Winter
+Moscow;URS;RU;1980;Summer
+Los Angeles;USA;US;1984;Summer
+Atlanta;USA;US;1996;Summer
+Salt Lake City;USA;US;2002;Winter
+Sarajevo;YUG;YU;1984;Winter

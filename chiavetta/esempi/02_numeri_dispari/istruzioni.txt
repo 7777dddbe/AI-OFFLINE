@@ -1,0 +1,6 @@
+[Facile] Genera una lista contenente una sequenza di 80 numeri casuali DISPARI compresi tra 1 e 49 (inclusi).
+[Intermedio - Mappatura Posizioni] Crea un dizionario per memorizzare gli indici (ovvero le posizioni) in cui compare ciascun numero presente nella lista.
+Esempio di output: {1: [0, 12, 45], 7: [3, 19], ...}
+[Avanzato - Algoritmo di Calcolo] Utilizzando unicamente il dizionario creato al punto precedente (senza ri-scorrere la lista di partenza):
+Determina qual è il numero (o i numeri) che si ripete più frequentemente.
+Calcola la distanza massima (espressa come differenza tra indici) tra la prima e l'ultima occorrenza di quel numero all'interno della lista.

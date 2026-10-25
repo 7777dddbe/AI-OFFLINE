@@ -1,0 +1,12 @@
+# file creati sulla chiavetta (non vanno su GitHub)
+chiavetta/sistema/python/
+chiavetta/sistema/llama-win/
+chiavetta/sistema/llama-linux/
+chiavetta/sistema/modelli/
+chiavetta/sistema/cache/
+chiavetta/sistema/log/
+chiavetta/sistema/tmp/
+chiavetta/sistema/*.zip
+chiavetta/sistema/*.tar.gz
+chiavetta/programmi/*/
+__pycache__/

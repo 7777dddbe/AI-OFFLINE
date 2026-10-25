@@ -1,0 +1,5 @@
+# i file .bat e i LEGGIMI restano con il fine riga di Windows (CRLF)
+*.bat -text
+chiavetta/**/LEGGIMI.txt -text
+chiavetta/LEGGIMI.txt -text
+*.sh text eol=lf

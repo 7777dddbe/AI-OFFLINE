@@ -1,0 +1,75 @@
+AI PYTHON OFFLINE - ISTRUZIONI
+==============================
+
+Un'intelligenza artificiale che vive sulla chiavetta: le scrivi l'esercizio
+di Python e lei ti restituisce il programma. Funziona SENZA internet e
+SENZA installare niente sul PC.
+
+
+1) PREPARAZIONE (solo la prima volta, su un PC con internet)
+------------------------------------------------------------
+   - Copia tutto il contenuto di questa cartella nella chiavetta.
+   - Doppio clic su  PREPARA_CHIAVETTA.bat
+   - Scarica circa 8-9 GB (motore AI + 3 modelli). Con una connessione
+     normale servono 15-40 minuti. Se si interrompe, rilancialo: riparte
+     da dove era arrivato.
+   - Se Windows dice "Windows ha protetto il PC": clic su
+     "Ulteriori informazioni" e poi "Esegui comunque".
+
+
+2) USO (su qualsiasi PC Windows, senza internet)
+------------------------------------------------
+   - Doppio clic su  AVVIA_AI.bat
+   - Aspetta "Motore AI pronto" (dalla chiavetta puo' volerci qualche minuto).
+   - Incolla il testo dell'esercizio (tasto destro oppure CTRL+V).
+   - Quando hai finito premi INVIO su una riga vuota (oppure scrivi FINE).
+   - Se l'esercizio usa un file (csv, txt, fasta, vcf, xlsx...) trascinalo
+     dentro la finestra e premi INVIO. I file Excel vengono convertiti in CSV.
+   - Aspetta: l'AI scrive il programma, lo prova da sola e se trova errori
+     lo corregge. Su un PC lento puo' volerci 5-15 minuti.
+   - Il programma viene salvato nella cartella  programmi
+     (una cartella per ogni esercizio, con il programma e i file dei dati).
+   - Dal menu puoi: eseguire il programma, chiedere modifiche,
+     copiarlo negli appunti, fare un nuovo esercizio.
+
+
+3) INSEGNARE IL TUO STILE ALL'AI
+--------------------------------
+   - Cartella  esempi : ogni sottocartella e' un esempio con
+       istruzioni.txt   = il testo dell'esercizio
+       programma.py     = la soluzione scritta come piace a te
+       (eventuali file di dati, es. dati.csv)
+     Aggiungi i tuoi esempi migliori: l'AI usa quelli piu' simili
+     all'esercizio che le dai.
+   - Le regole di stile sono in  sistema\app\stile.txt  (puoi modificarle).
+
+
+4) IMPOSTAZIONI  (sistema\app\config.json, si apre con il Blocco note)
+-----------------------------------------------------------------------
+   "modello": "auto"      -> sceglie da solo in base alla RAM del PC
+              "grande"    -> Qwen2.5-Coder 7B (il piu' bravo, serve PC da 8 GB)
+              "medio"     -> Qwen3.5 4B
+              "piccolo"   -> Qwen2.5-Coder 1.5B (per PC da 4 GB)
+   "ragionamento": true   -> l'AI "pensa" prima di scrivere: a volte meglio,
+                             ma molto piu' lento (solo modelli che lo supportano)
+
+
+5) TRACCE SUL PC
+----------------
+   Tutto (programmi, registri, cache) resta sulla chiavetta, nella cartella
+   sistema. Sul PC non viene installato niente e non resta nessun file.
+   Come per qualsiasi chiavetta e programma, Windows annota comunque per
+   conto suo che e' stata collegata una chiavetta e quali programmi sono
+   stati avviati.
+
+
+6) PROBLEMI?
+------------
+   - "La chiavetta non e' ancora pronta": rifai il punto 1.
+   - Lentissimo: chiudi gli altri programmi (browser!) o usa "piccolo".
+   - La chiavetta e' in FAT32: il modello grande (4,7 GB) non ci sta.
+     Salva i file, formatta la chiavetta in exFAT e rifai il punto 1.
+   - Registro del motore AI: sistema\log\server.log
+   - Linux: apri il terminale nella chiavetta e scrivi
+       sh PREPARA_CHIAVETTA_linux.sh   (la prima volta)
+       sh AVVIA_AI_linux.sh

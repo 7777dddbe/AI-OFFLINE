@@ -1,0 +1,3 @@
+Cartella DATI
+Puoi mettere qui i file che usano i tuoi esercizi (csv, txt, fasta, vcf, xlsx...).
+Quando l'AI te lo chiede, basta scrivere il numero del file.

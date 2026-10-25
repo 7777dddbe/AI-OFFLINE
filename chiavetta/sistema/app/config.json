@@ -1,0 +1,55 @@
+{
+  "modello": "auto",
+  "temperatura": 0.3,
+  "max_token_risposta": 3000,
+  "ragionamento": false,
+  "tentativi_correzione": 2,
+  "secondi_test": 20,
+  "caratteri_esempi": 11000,
+  "argomenti_extra_server": [],
+
+  "modelli": [
+    {
+      "id": "grande",
+      "nome": "Qwen2.5-Coder 7B",
+      "ram_libera_minima_gb": 5.6,
+      "contesto": 8192,
+      "caratteri_esempi": 11000,
+      "quant": "Q4_K_M",
+      "repo": [
+        "bartowski/Qwen2.5-Coder-7B-Instruct-GGUF",
+        "lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF",
+        "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF"
+      ]
+    },
+    {
+      "id": "medio",
+      "nome": "Qwen3.5 4B",
+      "ram_libera_minima_gb": 3.4,
+      "contesto": 12288,
+      "caratteri_esempi": 17000,
+      "quant": "Q4_K_M",
+      "repo": [
+        "unsloth/Qwen3.5-4B-GGUF",
+        "bartowski/Qwen_Qwen3.5-4B-GGUF",
+        "lmstudio-community/Qwen3.5-4B-GGUF",
+        "unsloth/Qwen3-4B-Instruct-2507-GGUF",
+        "bartowski/Qwen_Qwen3-4B-Instruct-2507-GGUF",
+        "bartowski/Qwen2.5-Coder-3B-Instruct-GGUF"
+      ]
+    },
+    {
+      "id": "piccolo",
+      "nome": "Qwen2.5-Coder 1.5B",
+      "ram_libera_minima_gb": 0,
+      "contesto": 8192,
+      "caratteri_esempi": 9000,
+      "quant": "Q4_K_M",
+      "repo": [
+        "bartowski/Qwen2.5-Coder-1.5B-Instruct-GGUF",
+        "lmstudio-community/Qwen2.5-Coder-1.5B-Instruct-GGUF",
+        "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF"
+      ]
+    }
+  ]
+}
